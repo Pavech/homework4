@@ -11,13 +11,11 @@ class ValidatorError(Exception):
         return "Не валидные данные"
 
 
-
-
-
 def blossom(max_retries: int = 1) -> Callable:
     """Проверка значения на допустимость"""
     if max_retries < 1 or not isinstance(max_retries, int):
         raise ValidatorError("значение не должно быть дробным или меньше 1")
+
     def decoration(func: Callable) -> Callable:
         def wrapper(*args: Any, **kwargs: Any) -> Any:
             result = dict()
